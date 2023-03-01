@@ -20,8 +20,9 @@ class UserController {
         });
       }
 
-      const { email, name, surname, city, password } = req.body;
+      const { email, name, surname, country, password } = req.body;
 
+      console.log(req.body);
       const candidate = await User.findOne({ email });
       //check if candidate is exist
       if (candidate) {
@@ -39,7 +40,7 @@ class UserController {
         email,
         name,
         surname,
-        city,
+        country,
         password: hashPassword,
         pId: newCustomer.id,
       });
@@ -67,7 +68,11 @@ class UserController {
         return res.status(404).json(errorConfig.wrongPasswordError);
       }
 
-      const token = generateAccessToken(candidate._id, candidate.pId);
+      const token = generateAccessToken(
+        candidate._id,
+        candidate.pId,
+        candidate.createdAt
+      );
 
       res.json({
         token,
@@ -87,7 +92,7 @@ class UserController {
 
   getInfo = async (req, res) => {
     const { pId } = req;
-    res.json(pId);
+    res.json("Sdskdmk");
   };
 }
 

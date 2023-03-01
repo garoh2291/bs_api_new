@@ -29,6 +29,7 @@ module.exports = (req, res, next) => {
     console.log(decodedData);
     req.user = decodedData.id;
     req.pId = decodedData.pId;
+    req.created = decodedData.created;
     next();
   } catch (e) {
     return res.status(404).json({ error: errorConfig.notAuthorized });

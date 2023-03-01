@@ -7,6 +7,7 @@ const generateAccessToken = (id, pId) => {
   const payload = {
     id,
     pId,
+    created,
   };
   return jwt.sign(payload, secret, { expiresIn: validDate });
 };

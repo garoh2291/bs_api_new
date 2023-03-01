@@ -14,7 +14,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  city: {
+  country: {
     type: String,
     required: true,
   },
@@ -28,6 +28,9 @@ const userSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
+  },
+  SelectedEvents: {
+    items: [],
   },
 });
 

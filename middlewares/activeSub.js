@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
   try {
     const { pId } = req;
     const subscriptions = await stripe.subscriptions.list({
-      customer: pId,
+      customer: "cus_NKAynOW8NycWni",
     });
     console.log("sub", subscriptions);
     if (!subscriptions.data.length) {

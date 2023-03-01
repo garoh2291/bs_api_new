@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 const userRouter = require("./routes/users");
+const eventRouter = require("./routes/events");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/auth", userRouter);
+app.use("/api/v1/auth", userRouter);
+app.use("/api/v1/events", eventRouter);
 
 module.exports = app;
