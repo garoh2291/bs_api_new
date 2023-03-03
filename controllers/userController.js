@@ -22,7 +22,6 @@ class UserController {
 
       const { email, name, surname, country, password } = req.body;
 
-      console.log(req.body);
       const candidate = await User.findOne({ email });
       //check if candidate is exist
       if (candidate) {
@@ -54,10 +53,9 @@ class UserController {
 
   signin = async (req, res) => {
     try {
-      const { username, password } = req.body;
-
-      const candidate = await User.findOne({ username });
-
+      const { email, password } = req.body;
+      const candidate = await User.findOne({ email });
+      console.log(candidate);
       if (!candidate) {
         return res.status(404).json(errorConfig.userNotFound);
       }
@@ -80,7 +78,7 @@ class UserController {
           id: candidate._id,
           name: candidate.name,
           surname: candidate.surname,
-          city: candidate.city,
+          country: candidate.country,
           pId: candidate.pId,
           created: candidate.createdAt,
         },
@@ -92,7 +90,7 @@ class UserController {
 
   getInfo = async (req, res) => {
     const { pId } = req;
-    res.json("Sdskdmk");
+    res.json(pId);
   };
 }
 
